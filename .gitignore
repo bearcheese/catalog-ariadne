@@ -1,0 +1,7 @@
+#Ignore .class files
+*.class
+common/bin
+common/target
+common/data
+.*
+!.gitignore
