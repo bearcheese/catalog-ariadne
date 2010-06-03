@@ -1,9 +1,11 @@
 Ariadne Disk Catalogue
 
-//TODO write readme :)
+This project has two main goals. First, I always wanted to create a desktop application which helps me to catalogue my stuff on discs. I always spend hours to find the disc what I promised to lend to one of my friends. On the other hand I always interested in GUI applications, and I made several small programs using Swing for fun or for some sort of exercise. However sometimes I had problems how to build up the structure when the code grown, and tried to find a proper solution to make the app structure clear and maintainable. I use Spring RCP for this project, I think it would suitable and helps to learn a way how to build up a bigger GUI system.
 
-The project is very young and I'm just learning how to use git.
+The project is very young and I'm just learning how to use git. If you have comments please feel free to submit them :)
 
-Programmers:
+Cheers,
+
+the programmers:
 bearcheese
 mpety
