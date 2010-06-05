@@ -195,21 +195,16 @@
     			<prop key="propertyName">propertyList</prop>
     			<prop key="binderRef">itemPropertyTableBinder</prop>
     		</props>
-    		<!--props>
-    			<prop key="objectClass">hu.bearmaster.zephir.common.model.vdo.BalanceEntryVDO</prop>
-    			<prop key="propertyName">partner</prop>
-    			<prop key="binderRef">partnerBinder</prop>
+    		<props>
+    			<prop key="objectClass">hu.bearmaster.phoenix.common.model.Disc</prop>
+    			<prop key="propertyName">type</prop>
+    			<prop key="binderRef">discTypeBinder</prop>
     		</props>
     		<props>
-    			<prop key="objectClass">hu.bearmaster.zephir.common.model.vdo.BalanceEntryVDO</prop>
-    			<prop key="propertyName">debitAccount</prop>
-    			<prop key="binderRef">accountBinder</prop>
+    			<prop key="objectClass">hu.bearmaster.phoenix.common.model.Disc</prop>
+    			<prop key="propertyName">category</prop>
+    			<prop key="binderRef">discCategoryBinder</prop>
     		</props>
-    		<props>
-    			<prop key="objectClass">hu.bearmaster.zephir.common.model.vdo.BalanceEntryVDO</prop>
-    			<prop key="propertyName">creditAccount</prop>
-    			<prop key="binderRef">accountBinder</prop>
-    		</props-->
     	</list>
     </property>
   </bean>
@@ -220,10 +215,15 @@
     <bean id="itemPropertyTableBinder" class="hu.bearmaster.phoenix.gui.bind.ItemPropertyTableBinder">
     </bean>
     
-    <!--bean id="addressTypeBinder" class="hu.bearmaster.zephir.gui.model.bind.AddressTableBinder">
+    <bean id="discTypeBinder" class="hu.bearmaster.phoenix.gui.bind.DiscTypeBinder">
+    	<constructor-arg ref="dbManageServ" />
     </bean>
     
-    <bean id="partnerBinder" class="hu.bearmaster.zephir.gui.model.bind.PartnerBinder">
+    <bean id="discCategoryBinder" class="hu.bearmaster.phoenix.gui.bind.DiscCategoryBinder">
+    	<constructor-arg ref="dbManageServ" />
+    </bean>
+    
+    <!--bean id="partnerBinder" class="hu.bearmaster.zephir.gui.model.bind.PartnerBinder">
     	<property name="partnerService" ref="partnerService" />
     </bean>
     
