@@ -120,10 +120,14 @@ public class CommonTable<T extends Comparable<? super T>> extends AbstractObject
 
 	/**
 	 * Returns the first item from the selected items
-	 * @return az első kiválasztott elem
+	 * @return the first selected item or null if nothing is selected
 	 */
 	public T getSelectedItem() {
-		return getSelectedItems().get(0);
+		List<T> selectedItems = getSelectedItems();
+		if ( selectedItems.size() > 0 ) {
+			return selectedItems.get(0);
+		}			
+		return null;
 	}
 	
 	/**

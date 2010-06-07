@@ -93,20 +93,44 @@ public class MainView extends AbstractView {
 
 		
 		CommandGroup popup = new CommandGroup();
-		popup.add((ActionCommand) getWindowCommandManager().getCommand("editDiscItemCommand", ActionCommand.class));
+		popup.add((ActionCommand) getWindowCommandManager().getCommand("editItemCommand", ActionCommand.class));
 		itemsTable.setPopupCommandGroup(popup);
 		
 		ValueModel selectionHolder = new ListSelectionValueModelAdapter(itemsTable.getSelectionModel());
 		new ListSingleSelectionGuard(selectionHolder, discItemPropertyExecutor);
 		itemsTable.setDoubleClickHandler(discItemPropertyExecutor);
-		//updateCommands();
+		updateCommands();
 		
 		panel.add(splitPane, BorderLayout.CENTER);
 		
-		propertiesExecutor.setEnabled(true);
-		
 		return panel;
 	}
+
+	private void updateCommands() {
+		int treeSelectionCount = catalogueTree.getSelectionCount();
+		if ( treeSelectionCount == 1 && getSelectedDisc() != null ) {
+			propertiesExecutor.setEnabled(true);
+		}
+		else {
+			if ( getSelectedDiscItemInTable() != null ) {
+				propertiesExecutor.setEnabled(true);
+				discItemPropertyExecutor.setEnabled(true);
+			}
+			else {
+				if ( isRootOrNothingSelected() ) {
+					propertiesExecutor.setEnabled(false);
+					discItemPropertyExecutor.setEnabled(false);
+				}
+			}
+		}
+		
+		
+	}
+	
+	private boolean isRootOrNothingSelected() {
+        return catalogueTree.getSelectionCount() == 0
+                || (catalogueTree.getSelectionCount() == 1 && catalogueTree.isRowSelected(0));
+    }
 
 	private void createCatalogueTree() {
 		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(getMessage("catalogue.root.label"));
@@ -155,7 +179,11 @@ public class MainView extends AbstractView {
 			}
 
 		});
-		
+		catalogueTree.addTreeSelectionListener(new TreeSelectionListener() {
+            public void valueChanged(TreeSelectionEvent e) {
+                updateCommands();
+            }
+        });
 		catalogueTree.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1 && propertiesExecutor.isEnabled()) {
@@ -278,7 +306,7 @@ public class MainView extends AbstractView {
 	@Override
 	protected void registerLocalCommandExecutors(PageComponentContext context) {
 		context.register(GlobalCommandIds.PROPERTIES, propertiesExecutor);
-		context.register("editDiscItemCommand", discItemPropertyExecutor);
+		context.register("editItemCommand", discItemPropertyExecutor);
 		/*
 		context.register("newItemCommand", newAccountExecutor);
 		context.register("removeFiltersCommand", removeFilterExecutor);

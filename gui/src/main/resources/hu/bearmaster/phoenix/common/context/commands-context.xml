@@ -8,11 +8,9 @@
     <property name="sharedCommandIds">
       <list>
       	<value>propertiesCommand</value>
-      	<value>editDiscItemCommand</value>
+      	<value>editItemCommand</value>
       	<value>deleteItemCommand</value>
-      	<value>removeFiltersCommand</value>
-  		<value>filterAccountRangeCommand</value>
-  		<value>searchAccountCommand</value>
+  		<value>searchItemCommand</value>
       </list>
     </property>
   </bean>
@@ -32,7 +30,8 @@
   <bean id="fileMenu" class="org.springframework.richclient.command.CommandGroupFactoryBean">
   	<property name="members">
   		<list>
-  			<value>newAccountMenu</value>
+  			<ref bean="scanDiscCommand" />
+  			<value>propertiesCommand</value>
   			<value>separator</value>
   			<bean class="org.springframework.richclient.command.support.ExitCommand" />
   		</list>
@@ -131,11 +130,13 @@
     <property name="aboutTextPath" value="hu/bearmaster/zephir/gui/about.txt" />
   </bean>
   
-  <!-- bean id="viewAccountChartCommand" class="hu.bearmaster.zephir.gui.command.ViewAccountChartCommand">
-  	<property name="accountChartView" ref="accountManagerView"/>
+  <bean id="scanDiscCommand" class="hu.bearmaster.phoenix.gui.command.ScanDiscCommand">
+  	<property name="fileManagementService" ref="fileManageServ" />
+  	<property name="persistenceService" ref="dbManageServ" />
+  	<property name="viewDescriptor" ref="mainView" />
   </bean>
   
-  <bean id="viewPartnerCommand" class="hu.bearmaster.zephir.gui.command.ViewPartnerCommand">
+  <!--bean id="viewPartnerCommand" class="hu.bearmaster.zephir.gui.command.ViewPartnerCommand">
   	<property name="partnerView" ref="partnerView"/>
   </bean-->
   
