@@ -140,7 +140,7 @@ public class PersistenceServiceImpl implements PersistenceService { // NOPMD by 
 		final Disc disc = loadDisc(id);
 		final List<DiscItem> items = loadDiscItems(disc);
 		
-		return new ScanResult(disc, items, null);
+		return new ScanResult(null, disc, items, null);
 	}
 
 	/**

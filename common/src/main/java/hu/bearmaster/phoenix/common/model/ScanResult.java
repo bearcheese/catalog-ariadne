@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public class ScanResult {
 	
+	private String scanRoot;
 	private Disc disc;
 	private List<DiscItem> discItems;
 	private Map<String, Object> statistics;
@@ -27,8 +28,9 @@ public class ScanResult {
 	 * @param disc
 	 * @param discItems
 	 */
-	public ScanResult(final Disc disc, final List<DiscItem> discItems, final Map<String, Object> statistics) {
+	public ScanResult(final String scanRoot, final Disc disc, final List<DiscItem> discItems, final Map<String, Object> statistics) {
 		super();
+		this.scanRoot = scanRoot;
 		this.disc = disc;
 		this.discItems = discItems;
 		this.statistics = statistics;
@@ -56,6 +58,14 @@ public class ScanResult {
 
 	public void setStatistics(final Map<String, Object> statistics) {
 		this.statistics = statistics;
+	}
+
+	public String getScanRoot() {
+		return scanRoot;
+	}
+
+	public void setScanRoot(String scanRoot) {
+		this.scanRoot = scanRoot;
 	}
 	
 }

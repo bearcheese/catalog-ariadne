@@ -208,7 +208,7 @@ public class FileWalker {
 	}
 
 	public ScanResult getResult() {
-		return new ScanResult(disc, discItems, getStatistics());
+		return new ScanResult(root.getAbsolutePath(), disc, discItems, getStatistics());
 	}
 	
 }
