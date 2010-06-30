@@ -143,7 +143,7 @@ public class DiscItem implements Comparable<DiscItem> {
 	}
 
 	public String toString(){
-		return "("+id+") "+path+"/"+name+" L="+length+" D="+disc.getId();
+		return "("+id+") "+path+"/"+name+" L="+length + " D="+(disc != null ? disc.getId() : "n/a");
 	}
 	
 	public List<ItemProperty> getPropertyList() {
