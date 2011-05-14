@@ -1,0 +1,5 @@
+#surefire
+#Sat May 14 23:47:07 CEST 2011
+user.dir=D\:\\dev\\phoenix-maven\\ariadne\\common
+localRepository=d\:\\dev\\mvn_repo
+basedir=D\:\\dev\\phoenix-maven\\ariadne\\common

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false" default-lazy="false">
+    <class name="hu.bearmaster.phoenix.common.model.Category" table="categories">
+        <id name="id" type="long" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" length="20"/>
+        <property name="description" type="string" length="100"/>
+    </class>
+</hibernate-mapping>

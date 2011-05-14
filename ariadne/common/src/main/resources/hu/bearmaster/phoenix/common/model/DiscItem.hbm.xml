@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false" default-lazy="false">
+    <class name="hu.bearmaster.phoenix.common.model.DiscItem" table="items">
+        <id name="id" type="long" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" length="150"/>
+        <property name="path" type="string" length="512"/>
+        <property name="length" type="long"/>
+        <many-to-one name="disc" class="hu.bearmaster.phoenix.common.model.Disc" not-null="true" column="discid" cascade="save-update"/>
+        <map name="properties" table="itemprops">
+            <key column="pid"/>
+            <map-key type="string" column="mkey"/>
+            <element type="string" column="mvalue"/>
+        </map>
+    </class>
+</hibernate-mapping>
