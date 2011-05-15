@@ -1,6 +1,7 @@
 package hu.bearmaster.phoenix.common.util;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public final class SpringUtil {
-    private static final Logger LOGGER = Logger.getLogger(SpringUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringUtil.class);
 
     private static ApplicationContext userContext;
     public static final String PRIMARY_TARGET = "spring-ariadne.xml";
@@ -49,7 +50,7 @@ public final class SpringUtil {
         try {
             return userContext.getBean(beanName);
         } catch (Exception ex) {
-            LOGGER.error("Spring bean not found! Bean: " + beanName);
+            LOGGER.error("Spring bean not found! Bean: {}", beanName);
             throw new RuntimeException(ex); // NOPMD by "Zoltan Molnar" on 2010.05.15. 18:52
         }
     }

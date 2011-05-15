@@ -4,12 +4,13 @@ import hu.bearmaster.phoenix.common.model.DiscItem;
 import hu.bearmaster.phoenix.gui.components.dialogs.EditDiscItemDialog;
 import hu.bearmaster.phoenix.gui.views.MainView;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.richclient.command.support.AbstractActionCommandExecutor;
 
 public class EditDiscItemExecutor extends AbstractActionCommandExecutor {
 
-private static final Logger LOG = Logger.getLogger(EditDiscExecutor.class);
+private static final Logger LOG = LoggerFactory.getLogger(EditDiscExecutor.class);
 	
 	private MainView view;
 	
@@ -25,7 +26,7 @@ private static final Logger LOG = Logger.getLogger(EditDiscExecutor.class);
 		dialog.showDialog();
 		
 		if (dialog.isApproved()) {
-			LOG.info("Dialog approved, save changes: " + selectedDiscItem);
+			LOG.info("Dialog approved, save changes: {}", selectedDiscItem);
 			//TODO update DB
 		} else {
 			LOG.info("Disc item update cancelled...");

@@ -26,7 +26,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileSystemView;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.binding.form.FormModel;
 import org.springframework.binding.value.ValueModel;
 import org.springframework.richclient.command.ActionCommand;
@@ -40,7 +41,7 @@ import com.jgoodies.forms.layout.FormLayout;
 public class ScanDiscForm extends AbstractForm {
 	
 	public static final String SCAN_DISC_FORM = "scanDiscForm";
-	private static final Logger LOG = Logger.getLogger(ScanDiscForm.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ScanDiscForm.class);
 
 	private JTextArea scannedFiles;
 	private DirectoryChooserComboBox dirChooser;
@@ -238,7 +239,7 @@ public class ScanDiscForm extends AbstractForm {
 			File desktop = fsv.getRoots()[0]; 
 			for (File c : desktop.listFiles()) {
 				//XXX Hack for determining which file is the My Computer (tested on Windows XP only)
-				LOG.info("ToS: " + c.toString() + " Abs: " + c.getAbsolutePath());
+				LOG.info("ToS: {} Abs: {}", c.toString(), c.getAbsolutePath());
 				if(c.getAbsolutePath().endsWith("{20D04FE0-3AEA-1069-A2D8-08002B30309D}")) {
 					myComputer = c;
 					break;

@@ -9,14 +9,15 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumnModel;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.richclient.table.support.AbstractObjectTable;
 
 import ca.odell.glazedlists.EventList;
 
 public class CommonTable<T extends Comparable<? super T>> extends AbstractObjectTable {
 	
-	private static final Logger LOG = Logger.getLogger(CommonTable.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CommonTable.class);
 	
 	private List<T> initialItems;
 	private int[] preferredWidths;
@@ -139,16 +140,16 @@ public class CommonTable<T extends Comparable<? super T>> extends AbstractObject
 	 */
 	public void showCell(int row, int column) {
 		//TODO továbbfejleszteni hogy középen jelenjen meg a cella!
-		LOG.info("Set table to show: (" + row + "," + column + ")");
+		LOG.info("Set table to show: ({},{})", row, column);
 		JTable table = getTable();
 		Rectangle rect = table.getCellRect(row, column, true);
 		table.scrollRectToVisible(rect);
 		table.clearSelection();
 		//table.setRowSelectionInterval(row, row);
 		table.getSelectionModel().setSelectionInterval(row, row);
-		LOG.info("Selection foreground=" + table.getSelectionForeground());
-		LOG.info("Selection background=" + table.getSelectionBackground());
-		LOG.info("Selected row=" + table.getSelectedRow());
+		LOG.info("Selection foreground={}", table.getSelectionForeground());
+		LOG.info("Selection background={}", table.getSelectionBackground());
+		LOG.info("Selected row={}", table.getSelectedRow());
 		getTableModel().fireTableDataChanged();
 		table.repaint();
 	}

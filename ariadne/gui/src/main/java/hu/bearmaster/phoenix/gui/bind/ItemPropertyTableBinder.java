@@ -8,7 +8,8 @@ import java.util.Map;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.binding.form.FormModel;
 import org.springframework.richclient.form.binding.Binding;
 import org.springframework.richclient.form.binding.support.AbstractBinder;
@@ -16,7 +17,7 @@ import org.springframework.richclient.util.Assert;
 
 public class ItemPropertyTableBinder extends AbstractBinder {
 	
-	private static final Logger LOG = Logger.getLogger(ItemPropertyTableBinder.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ItemPropertyTableBinder.class);
 	
 	private DiscItemPropertyTable itemPropertyTable;
 	

@@ -13,7 +13,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,7 +31,8 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.binding.value.ValueModel;
 import org.springframework.richclient.application.PageComponentContext;
 import org.springframework.richclient.application.support.AbstractView;
@@ -46,7 +46,7 @@ import org.springframework.richclient.tree.FocusableTreeCellRenderer;
 
 public class MainView extends AbstractView {
 	
-	private static final Logger LOG = Logger.getLogger(MainView.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MainView.class);
 
 	private PersistenceService persistenceService;
 	private DefaultTreeModel catalogueModel;

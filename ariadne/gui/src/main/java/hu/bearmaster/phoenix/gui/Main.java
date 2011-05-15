@@ -1,9 +1,8 @@
 package hu.bearmaster.phoenix.gui;
 import hu.bearmaster.phoenix.common.util.SpringUtil;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.richclient.application.ApplicationLauncher;
-import org.apache.log4j.Logger;
-
 
 public class Main {
 
@@ -23,7 +22,7 @@ public class Main {
             new ApplicationLauncher(startupContextPath, new String[] { richclientApplicationContextPath,
                     businessLayerContextPath /*, securityContextPath */});
         } catch (RuntimeException e) {
-        	Logger.getLogger(Main.class).error("RuntimeException during startup", e);
+        	LoggerFactory.getLogger(Main.class).error("RuntimeException during startup", e);
         }
 
 	}

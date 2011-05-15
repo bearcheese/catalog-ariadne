@@ -15,7 +15,8 @@ import java.util.Map;
 
 import javax.swing.filechooser.FileSystemView;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FileWalker class
@@ -31,7 +32,7 @@ import org.apache.log4j.Logger;
  */
 public class FileWalker {
 	
-	private static final Logger LOG = Logger.getLogger(FileWalker.class);
+	private static final Logger LOG = LoggerFactory.getLogger(FileWalker.class);
 	
 	private File root; //root directory of scanning (mostly a drive's root directory)
 	private int depth = 0; //the maximum depth to scan the filesystem
@@ -142,7 +143,7 @@ public class FileWalker {
 	}
 	
 	protected void scanDiscInfo(){
-		LOG.debug("Scanning volume: " + root + " for disc info");
+		LOG.debug("Scanning volume: {} for disc info", root);
 		String name = "DiscName";
 		String volumeName = getVolumeName(root);
 		Category category = new Category();
@@ -150,7 +151,7 @@ public class FileWalker {
 		java.sql.Date created = new java.sql.Date(new java.util.GregorianCalendar().getTimeInMillis());
 		
 		disc = new Disc(name, volumeName, category, type, created);
-		LOG.debug("Disc scan completed: " + disc);
+		LOG.debug("Disc scan completed: {}", disc);
 	}
 	
 	protected String getVolumeName(final File root){
@@ -179,7 +180,7 @@ public class FileWalker {
 		File[] files = dir.listFiles(filter);
 		actDepth++;
 		for(File f : files){
-			LOG.debug("Scanning file: " + f.getAbsolutePath());
+			LOG.debug("Scanning file: {}", f.getAbsolutePath());
 			if(Thread.currentThread().isInterrupted()) {
 				LOG.warn("Method interrupted, returning...");
 				interrupted = true;
@@ -197,12 +198,12 @@ public class FileWalker {
 	}
 	
 	protected DiscItem scanFileInfo(final File file){
-		LOG.debug("Gathering file info from: " + file.getAbsolutePath());
+		LOG.debug("Gathering file info from: {}", file.getAbsolutePath());
 		DiscItem discItem = new DiscItem(file);
 		totalSize += discItem.getLength();
 		if (collectors != null && !collectors.isEmpty()) {
 			for (PropertyCollector pc : collectors) {
-				LOG.debug("Applying property collector: " + pc.getClass());
+				LOG.debug("Applying property collector: {}", pc.getClass());
 				discItem.setProperties(pc.scanItem(file));
 			}
 		}

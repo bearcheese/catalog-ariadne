@@ -8,16 +8,15 @@ import hu.bearmaster.phoenix.common.model.Disc;
 import hu.bearmaster.phoenix.common.model.Type;
 
 import java.util.List;
-
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 
 public class DiscDAOImpl extends GenericDAOImpl<Disc, Long> implements DiscDAO{
 
-	private static final Logger LOG = Logger.getLogger(DiscDAOImpl.class);
+	private static final Logger LOG = LoggerFactory.getLogger(DiscDAOImpl.class);
 	
 	private CategoryDAO categoryDao;
 	private TypeDAO typeDao;
@@ -64,7 +63,7 @@ public class DiscDAOImpl extends GenericDAOImpl<Disc, Long> implements DiscDAO{
 			}
 		}
 		else {
-			LOG.warn("CategoryDAO is not set, can't lookup for categories!");
+			LOG.error("CategoryDAO is not set, can't lookup for categories!");
 		}
 		return null;
 	}
@@ -83,7 +82,7 @@ public class DiscDAOImpl extends GenericDAOImpl<Disc, Long> implements DiscDAO{
 			}
 		}
 		else {
-			LOG.warn("TypeDAO is not set, can't lookup for types!");
+			LOG.error("TypeDAO is not set, can't lookup for types!");
 		}
 		return null;
 	}		

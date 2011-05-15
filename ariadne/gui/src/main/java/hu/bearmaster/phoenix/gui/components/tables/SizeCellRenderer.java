@@ -7,11 +7,12 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SizeCellRenderer extends DefaultTableCellRenderer {
 
-	private static final Logger LOG = Logger.getLogger(SizeCellRenderer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SizeCellRenderer.class);
 	
 	private static final long serialVersionUID = 8064480108331848586L;
 
