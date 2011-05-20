@@ -1,7 +1,9 @@
 package hu.bearmaster.phoenix.gui.model;
 
+import hu.bearmaster.phoenix.common.model.Category;
 import hu.bearmaster.phoenix.common.model.ScanResult;
-import hu.bearmaster.phoenix.gui.components.dialogs.ScanDiscForm;
+import hu.bearmaster.phoenix.common.model.Type;
+import hu.bearmaster.phoenix.gui.components.forms.ScanDiscForm;
 
 /**
  * A model class for {@link ScanDiscForm}
@@ -14,9 +16,9 @@ public class ScanSettings {
 	
 	private String discName;
 	
-	private String discCategory;
+	private Category discCategory; /**using {@link Category}} type so the {@link ScanDiscForm}} can use the proper binder*/ 
 	
-	private String discType;
+	private Type discType; /**using {@link Type}} type so the {@link ScanDiscForm}} can use the proper binder*/
 	
 	private ScanResult scanResult;
 
@@ -36,20 +38,20 @@ public class ScanSettings {
 		this.discName = discName;
 	}
 
-	public String getDiscCategory() {
+	public Category getDiscCategory() {
 		return discCategory;
 	}
 
 	public void setDiscCategory(String discCategory) {
-		this.discCategory = discCategory;
+		this.discCategory = new Category(discCategory, "scansettings dummy");
 	}
 
-	public String getDiscType() {
+	public Type getDiscType() {
 		return discType;
 	}
 
 	public void setDiscType(String discType) {
-		this.discType = discType;
+		this.discType = new Type(discType);
 	}
 
 	public ScanResult getScanResult() {

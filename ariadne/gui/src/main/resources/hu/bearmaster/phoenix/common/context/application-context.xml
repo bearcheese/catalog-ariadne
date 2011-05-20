@@ -205,6 +205,16 @@
     			<prop key="propertyName">category</prop>
     			<prop key="binderRef">discCategoryBinder</prop>
     		</props>
+    		<props>
+    			<prop key="objectClass">hu.bearmaster.phoenix.gui.model.ScanSettings</prop>
+    			<prop key="propertyName">discType</prop>
+    			<prop key="binderRef">discTypeBinder</prop>
+    		</props>
+    		<props>
+    			<prop key="objectClass">hu.bearmaster.phoenix.gui.model.ScanSettings</prop>
+    			<prop key="propertyName">discCategory</prop>
+    			<prop key="binderRef">discCategoryBinder</prop>
+    		</props>
     	</list>
     </property>
   </bean>

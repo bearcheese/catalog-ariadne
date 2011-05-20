@@ -95,6 +95,8 @@ public interface PersistenceService {
 	
 	//TODO deleteEntireDisc??? TBC
 	
+	void updateDisc(Disc disc);
+	
 	/**
 	 * Makes a search in the DB by the given criterias
 	 * @return

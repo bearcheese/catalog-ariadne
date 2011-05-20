@@ -1,10 +1,10 @@
 #Ignore .class files
 *.class
 *.log
-common/bin
-common/target
-common/data
-gui/bin
-gui/target
+ariadne/common/bin
+ariadne/common/target
+ariadne/common/data
+ariadne/gui/bin
+ariadne/gui/target
 .*
 !.gitignore

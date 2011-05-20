@@ -201,4 +201,8 @@ public class PersistenceServiceImpl implements PersistenceService { // NOPMD by 
 		return typeDao.findAll();
 	}
 
+	public void updateDisc(Disc disc) {
+		discDao.saveOrUpdate(disc);		
+	}
+
 }

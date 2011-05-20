@@ -1,6 +1,6 @@
 package hu.bearmaster.phoenix.gui.components.dialogs;
 
-import hu.bearmaster.phoenix.common.model.ScanResult;
+import hu.bearmaster.phoenix.gui.components.forms.ScanDiscForm;
 import hu.bearmaster.phoenix.gui.model.ScanSettings;
 
 import org.springframework.richclient.dialog.FormBackedDialogPage;

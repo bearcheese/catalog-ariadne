@@ -45,7 +45,7 @@ public class DiscTypeBinder extends AbstractBinder {
 	@Override
 	protected JComponent createControl(Map context) {
 		JComboBox comboBox = getComponentFactory().createComboBox();
-		comboBox.setEditable(true);
+		comboBox.setEditable(false);
 		return comboBox;
 	}
 	

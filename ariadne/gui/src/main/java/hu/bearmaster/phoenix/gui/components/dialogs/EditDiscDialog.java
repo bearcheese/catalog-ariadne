@@ -51,7 +51,7 @@ public class EditDiscDialog extends TitledPageApplicationDialog {
 		}
 		*/
 		approved = true;
-		return true;
+		return approved;
 	}
 	
 	@Override

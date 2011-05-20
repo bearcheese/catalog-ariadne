@@ -27,7 +27,8 @@ public class EditDiscExecutor extends AbstractActionCommandExecutor {
 		
 		if (dialog.isApproved()) {
 			LOG.info("Dialog approved, save changes: {}", selectedDisc);
-			//TODO update the DB
+			view.getPersistenceService().updateDisc(selectedDisc);
+			LOG.info("Changes saved successfully");
 		} else {
 			LOG.info("Disc update cancelled...");
 		}
